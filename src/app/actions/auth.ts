@@ -7,11 +7,11 @@ export async function register(
   formData: FormData,
 ) {
   try {
-    const (email, password) = await signupSchema.parseAsync({
-      email: formData.get("email") as String,
+    const { email, password } = await signupSchema.parseAsync({
+      email: formData.get("email"),
       password: formData.get("password"),
     });
   } catch (e) {
-    return "error"
+    return "error";
   }
 }
