@@ -1,6 +1,6 @@
 import { object, string } from "zod";
 
-export const signupSchema = object({
+export const signUpSchema = object({
   email: string({ required_error: "メールアドレスを入力してください。" }).email(
     "正しいメールアドレスの形式で入力してください。",
   ),
@@ -9,7 +9,7 @@ export const signupSchema = object({
     .max(32, "パスワードは32文字以内で設定してください。"),
 });
 
-export const signinSchema = object({
+export const signInSchema = object({
   email: string({ required_error: "メールアドレスを入力してください。" }).email(
     "正しいメールアドレスの形式で入力してください。",
   ),

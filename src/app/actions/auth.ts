@@ -1,16 +1,38 @@
 "use server";
 
 import bcrypt from "bcryptjs";
-import { signupSchema } from "schema";
+import { redirect, RedirectType } from "next/navigation";
+import { signUpSchema } from "schema";
 import { ZodError } from "zod";
+import { signIn } from "~/server/auth";
 import { db } from "~/server/db";
+
+export async function authenticate(
+  prevSate: string | undefined,
+  formData: FormData,
+) {
+  try {
+    await signIn("credentials", formData);
+    // redirect("/dashboard");
+  } catch (e) {
+    if (e instanceof ZodError) {
+      switch (e.type) {
+        case "CredentialsSignin":
+          return "無効なアカウントです。";
+        default:
+          return "エラーが発生しました。";
+      }
+    }
+  }
+  redirect("/dashboard");
+}
 
 export async function register(
   prevSate: string | undefined,
   formData: FormData,
 ) {
   try {
-    const { email, password } = await signupSchema.parseAsync({
+    const { email, password } = await signUpSchema.parseAsync({
       email: formData.get("email"),
       password: formData.get("password"),
     });
@@ -21,7 +43,7 @@ export async function register(
       },
     });
 
-    if (!user) {
+    if (user) {
       return "ユーザーがすでに登録されています。";
     }
 
@@ -37,6 +59,6 @@ export async function register(
     if (e instanceof ZodError) {
       e.errors.map((error) => error.message).join(",");
     }
-    return "error";
   }
+  redirect("/redirect-to", RedirectType.replace);
 }

@@ -1,8 +1,8 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { signinSchema } from "schema";
-import { db } from "~/server/db";
+import Credentials from "next-auth/providers/credentials";
+import { signInSchema } from "schema";
+import { db } from "../db";
 import bcrypt from "bcryptjs";
 
 /**
@@ -33,27 +33,21 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    CredentialsProvider({
-      // name: "Credentials",
+    Credentials({
       credentials: {
-        // email: { label: "Email", type: "email" },
-        // password: { label: "Password", type: "password" },
         email: {},
         password: {},
       },
       authorize: async (credentials) => {
         try {
           const { email, password } =
-            await signinSchema.parseAsync(credentials);
+            await signInSchema.parseAsync(credentials);
 
           const user = await db.user.findUnique({
             where: {
               email: email,
             },
           });
-          if (!user?.password) {
-            return null; // 認証失敗
-          }
 
           const passwordMatch = await bcrypt.compare(
             password,
@@ -65,12 +59,20 @@ export const authConfig = {
           }
 
           return user;
-        } catch (e) {
-          console.error("Authorization Error:", e);
+        } catch (error) {
           return null;
         }
       },
     }),
+    /**
+     * ...add more providers here.
+     *
+     * Most other providers require a bit more work than the Discord provider. For example, the
+     * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
+     * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
+     *
+     * @see https://next-auth.js.org/providers/github
+     */
   ],
   session: {
     strategy: "jwt",
