@@ -1,10 +1,13 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "figma-clone",
       "dependencies": {
         "@auth/prisma-adapter": "^2.7.2",
+        "@liveblocks/client": "^3.10.0",
+        "@liveblocks/react": "^3.10.0",
         "@prisma/client": "^6.5.0",
         "@t3-oss/env-nextjs": "^0.12.0",
         "@tanstack/react-query": "^5.69.0",
@@ -134,6 +137,12 @@
     "@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.5.5", "", {}, "sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og=="],
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
+
+    "@liveblocks/client": ["@liveblocks/client@3.10.0", "", { "dependencies": { "@liveblocks/core": "3.10.0" } }, "sha512-BkU4WuQz/KCYjcXDhBX81KoEniMGzljvs20bnrS20g7fQJ7snZAuvFHlXNqfZZ5tfC9xbSx65bKctL6zHa7emA=="],
+
+    "@liveblocks/core": ["@liveblocks/core@3.10.0", "", { "peerDependencies": { "@types/json-schema": "^7" } }, "sha512-TwzkjPaatgs9DRryG68pxqKFn33bXOZlUn+lDy5LKqS1MsKh3y7NphZtkEUqVM+msbHRPvR9A+5EnlMIOcLL7A=="],
+
+    "@liveblocks/react": ["@liveblocks/react@3.10.0", "", { "dependencies": { "@liveblocks/client": "3.10.0", "@liveblocks/core": "3.10.0" }, "peerDependencies": { "@types/react": "*", "@types/react-dom": "*", "react": "^18 || ^19 || ^19.0.0-rc" }, "optionalPeers": ["@types/react", "@types/react-dom"] }, "sha512-xdYHD0rlqCNApMb5SwhCRqUuEGnvW+ty0kFVTNSdQUz3QuvySmXmZa9ZeWC6J2Ev+ikEpcYuX5Kx8Es7I83+Ag=="],
 
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@0.2.12", "", { "dependencies": { "@emnapi/core": "^1.4.3", "@emnapi/runtime": "^1.4.3", "@tybys/wasm-util": "^0.10.0" } }, "sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ=="],
 

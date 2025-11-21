@@ -7,6 +7,10 @@ import { ZodError } from "zod";
 import { signIn } from "~/server/auth";
 import { db } from "~/server/db";
 
+export default async function signOut() {
+  // signOut();
+}
+
 export async function authenticate(
   prevSate: string | undefined,
   formData: FormData,
