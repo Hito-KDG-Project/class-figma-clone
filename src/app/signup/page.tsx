@@ -10,8 +10,8 @@ export default function Page() {
     undefined,
   );
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div className="w-full max-w-sm space-y-8 rounded-2xl border border-gray-300 px-6 py-14 pb-20">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50">
+      <div className="w-full max-w-sm space-y-8 rounded-2xl bg-white px-6 py-14 pb-20">
         <h1 className="text-2xl font-bold text-gray-700">アカウントの登録</h1>
         <form action={formAction} className="space-y-4">
           <div className="relative flex h-full flex-col space-y-2">

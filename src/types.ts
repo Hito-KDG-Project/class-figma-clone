@@ -24,7 +24,7 @@ export type RectangleLayer = {
   x: number;
   y: number;
   width: number;
-  hight: number;
+  height: number;
   fill: Color;
   stroke: Color;
   opacity: number;
@@ -36,7 +36,7 @@ export type EllipseLayer = {
   x: number;
   y: number;
   width: number;
-  hight: number;
+  height: number;
   fill: Color;
   stroke: Color;
   opacity: number;
@@ -75,3 +75,21 @@ export type Point = {
   x: number;
   y: number;
 };
+
+export enum CanvasMode {
+  None,
+  Inserting,
+}
+
+export type CanvasState =
+  | {
+      mode: CanvasMode.None;
+    }
+  | {
+      mode: CanvasMode.Inserting;
+      layerType:
+        | LayerType.Ellipse
+        | LayerType.Rectangle
+        | LayerType.Path
+        | LayerType.Text;
+    };

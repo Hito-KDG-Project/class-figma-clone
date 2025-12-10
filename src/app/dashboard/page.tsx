@@ -1,3 +1,4 @@
+"use client";
 import signOut from "../actions/auth";
 
 export default function Page() {
