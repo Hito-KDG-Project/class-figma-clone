@@ -78,6 +78,7 @@ export type Point = {
 
 export enum CanvasMode {
   None,
+  Dragging,
   Inserting,
 }
 
@@ -85,6 +86,7 @@ export type CanvasState =
   | {
       mode: CanvasMode.None;
     }
+  | { mode: CanvasMode.Dragging; point: Point }
   | {
       mode: CanvasMode.Inserting;
       layerType:
