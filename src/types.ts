@@ -86,7 +86,7 @@ export type CanvasState =
   | {
       mode: CanvasMode.None;
     }
-  | { mode: CanvasMode.Dragging; point: Point }
+  | { mode: CanvasMode.Dragging; point: Point | null }
   | {
       mode: CanvasMode.Inserting;
       layerType:
